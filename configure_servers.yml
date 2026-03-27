@@ -1,9 +1,9 @@
 ---
-- name: Configure managed nodes
+- name: Configure managed nodes - Basic packages
   hosts: bastion
   become: true
   tasks:
-    - name: Update and install Git
+    - name: Update and install basic tools
       ansible.builtin.apt:
         update_cache: true
         name:
@@ -11,11 +11,11 @@
           - net-tools
           - joe
           - mc
-          
-- name: Install Zabbix agent2
+        state: present
+
+- name: Install Zabbix Agent 2 (7.0 LTS)
   hosts: all
   become: true
   tasks:
-    - name: Import tasks for installation
+    - name: Import tasks for Zabbix Agent 2 installation
       ansible.builtin.import_tasks: /opt/repo/install-zabbix-agent2.yml
-...
