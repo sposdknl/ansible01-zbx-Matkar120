@@ -14,8 +14,8 @@
         state: present
 
 - name: Install Zabbix Agent 2 (7.0 LTS)
-  hosts: all
+  hosts: bastion
   become: true
   tasks:
-    - name: Import tasks for Zabbix Agent 2 installation
-      ansible.builtin.import_tasks: /opt/repo/install-zabbix-agent2.yml
+    - name: Import Zabbix Agent 2 installation tasks
+      ansible.builtin.import_tasks: install-zabbix-agent2.yml
